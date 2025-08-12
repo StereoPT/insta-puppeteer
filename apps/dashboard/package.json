@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "format": "biome format",
+    "lint": "biome lint",
+    "typecheck": "tsc"
   },
   "dependencies": {
     "next": "15.4.6",
