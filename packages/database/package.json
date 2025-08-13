@@ -1,0 +1,31 @@
+{
+  "name": "@insta-puppeteer/database",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "db:migrate:dev": "prisma migrate dev",
+    "db:seed": "tsx src/seed.ts",
+    "dev": "tsup src/* --watch",
+    "format": "biome format",
+    "lint": "biome lint",
+    "typecheck": "tsc --noEmit",
+    "generate": "prisma generate",
+    "prebuild": "yarn run generate",
+    "predev": "yarn run generate",
+    "studio": "prisma studio"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.14.0"
+  },
+  "devDependencies": {
+    "@insta-puppeteer/typescript-config": "workspace:*",
+    "prisma": "^6.14.0",
+    "rimraf": "^5.0.5",
+    "tsup": "^8.5.0",
+    "tsx": "4.19.1",
+    "typescript": "5.5.4"
+  },
+  "exports": {
+    ".": "./src/client.ts"
+  }
+}
