@@ -11,13 +11,15 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@insta-puppeteer/ui": "workspace:*",
+    "lucide-react": "^0.475.0",
     "next": "15.4.6",
     "react": "19.1.0",
     "react-dom": "19.1.0"
   },
   "devDependencies": {
     "@insta-puppeteer/typescript-config": "workspace:*",
-    "@tailwindcss/postcss": "^4",
+    "@insta-puppeteer/ui": "workspace:*",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

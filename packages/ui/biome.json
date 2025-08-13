@@ -1,0 +1,16 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.1.4/schema.json",
+  "extends": "//",
+  "linter": {
+    "rules": {
+      "style": {
+        "useFilenamingConvention": {
+          "level": "error",
+          "options": {
+            "filenameCases": ["camelCase", "kebab-case"]
+          }
+        }
+      }
+    }
+  }
+}
