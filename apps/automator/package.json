@@ -2,8 +2,9 @@
   "name": "@insta-puppeteer/automator",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/main.ts",
+    "dev": "nodemon --watch 'src/**/*.ts' --exec 'tsx' src/main.ts",
     "build": "tsc",
     "start": "node dist/main.js",
     "format": "biome format",
@@ -13,13 +14,14 @@
   "packageManager": "yarn@4.7.0",
   "dependencies": {
     "@insta-puppeteer/database": "workspace:*",
+    "dotenv": "^17.2.1",
     "puppeteer": "^24.16.1"
   },
   "devDependencies": {
     "@insta-puppeteer/typescript-config": "workspace:*",
     "@types/node": "^20",
     "nodemon": "^3.1.9",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.20.4",
     "typescript": "^5"
   }
 }
