@@ -807,6 +807,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@insta-puppeteer/automator@workspace:apps/automator"
   dependencies:
+    "@insta-puppeteer/database": "workspace:*"
     "@insta-puppeteer/typescript-config": "workspace:*"
     "@types/node": "npm:^20"
     nodemon: "npm:^3.1.9"
