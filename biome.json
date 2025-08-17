@@ -39,7 +39,8 @@
     "enabled": true,
     "actions": {
       "source": {
-        "useSortedAttributes": "on"
+        "useSortedAttributes": "on",
+        "organizeImports": "off"
       }
     }
   },
