@@ -1,4 +1,11 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.1.4/schema.json",
-  "extends": "//"
+  "extends": "//",
+  "linter": {
+    "rules": {
+      "suspicious": {
+        "noConsole": "off"
+      }
+    }
+  }
 }

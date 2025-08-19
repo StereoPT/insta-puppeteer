@@ -20,7 +20,7 @@ const main = async () => {
     await automator.initialize();
     await automator.login();
 
-    const posts = await automator.processHashtag("japan", 10);
+    const posts = await automator.processHashtag("lifestyle", 10);
     console.log(`Processed ${posts.length} posts`);
   } catch (error) {
     console.error("Automation error:", error);

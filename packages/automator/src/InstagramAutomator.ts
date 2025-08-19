@@ -49,6 +49,13 @@ export class InstagramAutomator {
 
       try {
         await this.postService.openPost(postLink.postId);
+
+        const alreadyLiked = await this.postService.alreadyLiked();
+        if (alreadyLiked) {
+          await this.postService.closePost();
+          continue;
+        }
+
         await this.postService.likePost();
 
         const scrapedData = await this.postService.scrapePostData(

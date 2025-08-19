@@ -1,4 +1,4 @@
-import { delay } from "@/utils/delay";
+import { delay } from "@/services/DelayService";
 import type { Page } from "puppeteer";
 
 export class AuthService {
@@ -8,8 +8,8 @@ export class AuthService {
     const loginPage = "https://www.instagram.com/accounts/login";
     console.log(` - Navigating to: ${loginPage}`);
 
-    await this.page.goto(loginPage);
-    await delay(5000);
+    await this.page.goto(loginPage, { waitUntil: "networkidle0" });
+    await delay.wait("navigate");
 
     if (this.page.url().includes("login")) {
       console.log(" - Login User");
@@ -17,21 +17,18 @@ export class AuthService {
       // Type Username
       await this.page.click("[name=username]");
       await this.page.keyboard.type(email, { delay: 100 });
-      await delay(5000);
+      await delay.wait("type");
 
       // Type Password
       await this.page.click("[name=password]");
       await this.page.keyboard.type(password, { delay: 100 });
-      await delay(5000);
+      await delay.wait("type");
 
       // Login
       await this.page.click("[type=submit]");
-      await delay(5000);
-
-      return true;
+      await delay.wait("click");
     } else {
       console.log(" - User Already Logged In");
-      return false;
     }
   }
 }

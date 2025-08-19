@@ -1,5 +1,5 @@
+import { delay } from "@/services/DelayService";
 import type { PostData, ScrapedPost } from "@/types";
-import { delay } from "@/utils/delay";
 import type { Page } from "puppeteer";
 
 export class PostService {
@@ -9,8 +9,8 @@ export class PostService {
     const tagsPage = `https://www.instagram.com/explore/search/keyword/?q=%23${hashtag}`;
     console.log(` - Navigating to hashtag: #${hashtag}`);
 
-    await this.page.goto(tagsPage);
-    await delay(5000);
+    await this.page.goto(tagsPage, { waitUntil: "networkidle0" });
+    await delay.wait("navigate");
   }
 
   async getPostLinks(): Promise<PostData[]> {
@@ -27,15 +27,26 @@ export class PostService {
 
   async openPost(postId: string) {
     await this.page.click(`a[href*="${postId}"]`);
-    await delay(5000);
+    await delay.quick();
   }
 
-  async likePost(): Promise<void> {
+  async alreadyLiked() {
+    try {
+      return await this.page.$eval(
+        'div[role="button"] svg[aria-label="Unlike"]',
+        (el) => !!el,
+      );
+    } catch {
+      return false;
+    }
+  }
+
+  async likePost() {
     try {
       await this.page.click('div[role="button"] svg[aria-label="Like"]', {
         count: 2,
       });
-      await delay(5000);
+      await delay.wait("like");
     } catch (error) {
       console.warn("Could not like post:", error);
     }
@@ -66,6 +77,6 @@ export class PostService {
 
   async closePost() {
     await this.page.keyboard.press("Escape");
-    await delay(5000);
+    await delay.quick();
   }
 }
