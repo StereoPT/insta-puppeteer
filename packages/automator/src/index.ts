@@ -1,0 +1,1 @@
+export { InstagramAutomator } from "./InstagramAutomator";

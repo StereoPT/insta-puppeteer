@@ -837,6 +837,7 @@ __metadata:
     dotenv: "npm:^17.2.1"
     nodemon: "npm:^3.1.9"
     puppeteer: "npm:^24.16.1"
+    tsup: "npm:^8.5.0"
     tsx: "npm:^4.20.4"
     typescript: "npm:^5"
   languageName: unknown
