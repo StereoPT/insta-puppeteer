@@ -6,7 +6,7 @@
     "module": "nodenext",
     "moduleResolution": "nodenext",
     "paths": {
-      "@/*": ["./src/*"]
+      "@insta-puppeteer/automator/*": ["./src/*"]
     }
   },
   "include": ["**/*.ts"],

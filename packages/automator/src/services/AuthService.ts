@@ -1,4 +1,4 @@
-import { delay } from "@/services/DelayService";
+import { delay } from "@insta-puppeteer/automator/services/DelayService";
 import type { Page } from "puppeteer";
 
 export class AuthService {

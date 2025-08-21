@@ -1,4 +1,4 @@
-import type { InstagramConfig } from "@/types";
+import type { InstagramConfig } from "@insta-puppeteer/automator/types";
 import path from "node:path";
 import type { Browser, Page } from "puppeteer";
 import puppeteer from "puppeteer";

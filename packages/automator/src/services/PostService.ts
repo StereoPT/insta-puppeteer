@@ -1,5 +1,5 @@
-import { delay } from "@/services/DelayService";
-import type { PostData, ScrapedPost } from "@/types";
+import { delay } from "@insta-puppeteer/automator/services/DelayService";
+import type { PostData, ScrapedPost } from "@insta-puppeteer/automator/types";
 import type { Page } from "puppeteer";
 
 export class PostService {

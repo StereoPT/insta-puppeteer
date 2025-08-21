@@ -1,5 +1,5 @@
-import { InstagramAutomator } from "@/InstagramAutomator";
-import type { InstagramConfig } from "@/types";
+import { InstagramAutomator } from "@insta-puppeteer/automator/InstagramAutomator";
+import type { InstagramConfig } from "@insta-puppeteer/automator/types";
 import "dotenv/config";
 
 const config: InstagramConfig = {
@@ -20,7 +20,7 @@ const main = async () => {
     await automator.initialize();
     await automator.login();
 
-    const posts = await automator.processHashtag("lifestyle", 10);
+    const posts = await automator.processHashtag("formula1", 3);
     console.log(`Processed ${posts.length} posts`);
   } catch (error) {
     console.error("Automation error:", error);

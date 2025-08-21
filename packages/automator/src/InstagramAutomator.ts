@@ -1,8 +1,11 @@
-import { AuthService } from "@/services/AuthService";
-import { BrowserService } from "@/services/BrowserService";
-import { DatabaseService } from "@/services/DatabaseService";
-import { PostService } from "@/services/PostService";
-import type { InstagramConfig, ScrapedPost } from "@/types";
+import { AuthService } from "@insta-puppeteer/automator/services/AuthService";
+import { BrowserService } from "@insta-puppeteer/automator/services/BrowserService";
+import { DatabaseService } from "@insta-puppeteer/automator/services/DatabaseService";
+import { PostService } from "@insta-puppeteer/automator/services/PostService";
+import type {
+  InstagramConfig,
+  ScrapedPost,
+} from "@insta-puppeteer/automator/types";
 
 export class InstagramAutomator {
   private browserService: BrowserService;

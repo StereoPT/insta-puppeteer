@@ -1,4 +1,4 @@
-import type { ScrapedPost } from "@/types";
+import type { ScrapedPost } from "@insta-puppeteer/automator/types";
 import { prisma } from "@insta-puppeteer/database";
 
 export class DatabaseService {
