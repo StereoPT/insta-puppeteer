@@ -1,10 +1,9 @@
-import { Automate } from "@/actions/automate";
-import type { LoginSchemaType } from "@/schemas/login";
+import { Automate, type AutomateArgs } from "@/actions/automate";
 import { useMutation } from "@tanstack/react-query";
 
 export const useAutomate = () => {
   return useMutation({
-    mutationFn: (data: LoginSchemaType) => {
+    mutationFn: (data: AutomateArgs) => {
       return Automate(data);
     },
   });

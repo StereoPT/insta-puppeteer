@@ -2,16 +2,16 @@
 
 import { InstagramAutomator } from "@insta-puppeteer/automator";
 
-type AutomateArgs = { email: string; password: string };
+export type AutomateArgs = { email: string; password: string; hashtag: string };
 
-export const Automate = async ({ email, password }: AutomateArgs) => {
+export const Automate = async ({ email, password, hashtag }: AutomateArgs) => {
   const config = {
     profileName: "stereopt",
     email,
     password,
     userAgent:
       "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36",
-    headless: false,
+    headless: true,
     viewport: { width: 1280, height: 860 },
   };
 
@@ -20,7 +20,7 @@ export const Automate = async ({ email, password }: AutomateArgs) => {
 
   await automator.login();
 
-  const posts = await automator.processHashtag("football", 3);
+  const posts = await automator.processHashtag(hashtag, 3);
   console.log(`Processed ${posts.length} posts`);
 
   await automator.close();
