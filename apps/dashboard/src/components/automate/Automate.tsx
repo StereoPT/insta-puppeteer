@@ -1,5 +1,6 @@
 "use client";
 
+import { AutomatePostGallery } from "@/components/automate/AutomatePostGallery";
 import { useAutomate } from "@/hooks/useAutomate";
 import { automateSchema, type AutomateSchemaType } from "@/schemas/automate";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -12,7 +13,7 @@ import { useForm } from "react-hook-form";
 
 export const Automate = () => {
   const { data: session } = useSession();
-  const { mutate, isPending } = useAutomate();
+  const { data: sessionId, mutate, isPending, isSuccess } = useAutomate();
 
   const form = useForm<AutomateSchemaType>({
     resolver: zodResolver(automateSchema),
@@ -30,7 +31,7 @@ export const Automate = () => {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col gap-8">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(handleAutomate)}>
           <div className="flex items-center justify-center gap-2">
@@ -55,6 +56,7 @@ export const Automate = () => {
           </div>
         </form>
       </Form>
+      {isSuccess && sessionId && <AutomatePostGallery sessionId={sessionId} />}
     </div>
   );
 };

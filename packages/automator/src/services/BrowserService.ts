@@ -38,6 +38,16 @@ export class BrowserService {
     if (this.config.userAgent) {
       await this.page.setUserAgent(this.config.userAgent);
     }
+
+    return this.browser;
+  }
+
+  getBrowser() {
+    if (!this.browser) {
+      throw new Error("Browser not launched. Call launch() first.");
+    }
+
+    return this.browser;
   }
 
   getPage() {

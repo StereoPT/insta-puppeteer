@@ -8,11 +8,11 @@ export type InstagramConfig = {
 };
 
 export type ScrapedPost = {
+  sessionId: string;
   postLink: string;
+  postId: string;
   date: Date;
-  hashtag: string;
   username: string;
-  imageLink: string;
 };
 
 export interface PostData {

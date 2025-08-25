@@ -19,11 +19,11 @@ export class InstagramAutomator {
   }
 
   async initialize() {
-    await this.browserService.launch();
+    const browser = await this.browserService.launch();
     const page = this.browserService.getPage();
 
     this.authService = new AuthService(page);
-    this.postService = new PostService(page);
+    this.postService = new PostService(browser, page);
   }
 
   async login() {
@@ -34,7 +34,7 @@ export class InstagramAutomator {
     await this.authService.login(this.config.email, this.config.password);
   }
 
-  async processHashtag(hashtag: string, maxPosts?: number) {
+  async processHashtag(hashtag: string, sessionId: string, maxPosts?: number) {
     if (!this.postService) {
       throw new Error("Automator not initialized. Call initialize() first.");
     }
@@ -62,8 +62,8 @@ export class InstagramAutomator {
         await this.postService.likePost();
 
         const scrapedData = await this.postService.scrapePostData(
-          hashtag,
-          postLink.href,
+          sessionId,
+          postLink,
         );
         await this.databaseService.savePost(scrapedData);
 

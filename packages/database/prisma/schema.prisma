@@ -11,14 +11,29 @@ generator client {
   output = "../generated/client"
 }
 
+model Session {
+  id            String        @id @default(uuid())
+
+  hashtag       String
+  status        String
+  posts         Post[]
+
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  @@unique([id])
+}
+
 model Post {
   id            String        @id @default(uuid())
+  sessionId     String
   
   username      String
-  imageLink     String
   postLink      String
-  hashtag       String
+  postId        String
   date          DateTime
+
+  session       Session       @relation(fields: [sessionId], references: [id], onDelete: Cascade)
 
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt

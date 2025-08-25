@@ -1,9 +1,13 @@
 import { delay } from "@insta-puppeteer/automator/services/DelayService";
 import type { PostData, ScrapedPost } from "@insta-puppeteer/automator/types";
-import type { Page } from "puppeteer";
+import { writeFileSync } from "node:fs";
+import type { Browser, Page } from "puppeteer";
 
 export class PostService {
-  constructor(private page: Page) {}
+  constructor(
+    private browser: Browser,
+    private page: Page,
+  ) {}
 
   async navigateToHashtag(hashtag: string): Promise<void> {
     const tagsPage = `https://www.instagram.com/explore/search/keyword/?q=%23${hashtag}`;
@@ -53,8 +57,8 @@ export class PostService {
   }
 
   async scrapePostData(
-    hashtag: string,
-    postLink: string,
+    sessionId: string,
+    postData: PostData,
   ): Promise<ScrapedPost> {
     const username = await this.page.$eval(
       "header div:nth-child(2) div a",
@@ -66,12 +70,25 @@ export class PostService {
       (img) => img.getAttribute("src") || "",
     );
 
+    const imagePage = await this.browser.newPage();
+    const viewSource = await imagePage.goto(imageLink);
+    await delay.wait("navigate");
+
+    if (viewSource) {
+      writeFileSync(
+        `public/images/${postData.postId}.png`,
+        await viewSource.buffer(),
+      );
+    }
+
+    await imagePage.close();
+
     return {
-      postLink,
+      sessionId,
+      postLink: postData.href,
+      postId: postData.postId ?? "",
       date: new Date(),
-      hashtag,
       username,
-      imageLink,
     };
   }
 
