@@ -18,22 +18,27 @@ const ExecuteAutomation = async ({
     password,
     userAgent:
       "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36",
-    headless: false,
+    headless: true,
     viewport: { width: 1280, height: 860 },
   };
 
   const automator = new InstagramAutomator(config);
-  await automator.initialize();
 
-  await automator.login();
+  try {
+    await automator.initialize();
 
-  await automator.processHashtag(hashtag, sessionId, 4);
-  await prisma.session.update({
-    where: { id: sessionId },
-    data: { status: "COMPLETED" },
-  });
+    await automator.login();
 
-  await automator.close();
+    await automator.processHashtag(hashtag, sessionId, 8);
+    await prisma.session.update({
+      where: { id: sessionId },
+      data: { status: "COMPLETED" },
+    });
+  } catch (error) {
+    console.error("Automation error:", error);
+  } finally {
+    await automator.close();
+  }
 };
 
 export const Automate = async ({ email, password, hashtag }: AutomateArgs) => {

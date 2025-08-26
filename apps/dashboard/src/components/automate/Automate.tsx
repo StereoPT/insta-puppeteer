@@ -40,6 +40,7 @@ export const Automate = () => {
               name="hashtag"
               render={({ field }) => (
                 <Input
+                  autoComplete="off"
                   className="max-w-md"
                   placeholder="Hastag to Automate. e.g: anime"
                   {...field}
