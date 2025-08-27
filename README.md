@@ -59,6 +59,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+[![InstaPuppeteer Banner][product-screenshot]]()
+
 InstaPuppeteer is a web-based automation tool that leverages browser automation to streamline Instagram management tasks. The application provides users with the ability to automate routine Instagram activities through an intuitive web interface and dashboard.
 
 The project aims to create a user-friendly platform where users can configure and schedule various Instagram automation workflows. By utilizing headless browser technology with Puppeteer, the application can interact with Instagram's web interface programmatically while maintaining natural browsing patterns.
@@ -235,6 +237,7 @@ Special thanks to the following resources and libraries that made this project p
 [license-url]: https://github.com/StereoPT/insta-puppeteer/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/guidosp
+[product-screenshot]: images/banner.png
 
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
