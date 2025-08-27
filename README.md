@@ -5,13 +5,12 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/StereoPT/InstaPuppeteer">
+  <a href="https://github.com/StereoPT/insta-puppeteer">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -20,14 +19,14 @@
   <p align="center">
     A web-based automation tool for streamlined Instagram management
     <br />
-    <a href="https://github.com/StereoPT/InstaPuppeteer"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/StereoPT/insta-puppeteer"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/StereoPT/InstaPuppeteer">View Demo</a>
+    <a href="https://github.com/StereoPT/insta-puppeteer">View Demo</a>
     ·
-    <a href="https://github.com/StereoPT/InstaPuppeteer/issues/new?labels=bug">Report Bug</a>
+    <a href="https://github.com/StereoPT/insta-puppeteer/issues/new?labels=bug">Report Bug</a>
     ·
-    <a href="https://github.com/StereoPT/InstaPuppeteer/issues/new?labels=enhancement">Request Feature</a>
+    <a href="https://github.com/StereoPT/insta-puppeteer/issues/new?labels=enhancement">Request Feature</a>
   </p>
 </div>
 
@@ -105,12 +104,12 @@ Before you begin, ensure you have the following installed on your system:
 
 1. Clone the repository
    ```sh
-   git clone https://github.com/StereoPT/InstaPuppeteer.git
+   git clone https://github.com/StereoPT/insta-puppeteer.git
    ```
 
 2. Navigate to the project directory
    ```sh
-   cd InstaPuppeteer
+   cd insta-puppeteer
    ```
 
 3. Install dependencies
@@ -207,9 +206,9 @@ Distributed under the MIT License. See `LICENSE.md` for more information.
 <!-- CONTACT -->
 ## Contact
 
-StereoPT - [@StereoPT](https://github.com/StereoPT) - [Open an issue](https://github.com/StereoPT/InstaPuppeteer/issues)
+StereoPT - [@StereoPT](https://github.com/StereoPT) - [Open an issue](https://github.com/StereoPT/insta-puppeteer/issues)
 
-Project Link: [https://github.com/StereoPT/InstaPuppeteer](https://github.com/StereoPT/InstaPuppeteer)
+Project Link: [https://github.com/StereoPT/insta-puppeteer](https://github.com/StereoPT/insta-puppeteer)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -224,18 +223,18 @@ Special thanks to the following resources and libraries that made this project p
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[contributors-shield]: https://img.shields.io/github/contributors/StereoPT/InstaPuppeteer.svg?style=for-the-badge
-[contributors-url]: https://github.com/StereoPT/InstaPuppeteer/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/StereoPT/InstaPuppeteer.svg?style=for-the-badge
-[forks-url]: https://github.com/StereoPT/InstaPuppeteer/network/members
-[stars-shield]: https://img.shields.io/github/stars/StereoPT/InstaPuppeteer.svg?style=for-the-badge
-[stars-url]: https://github.com/StereoPT/InstaPuppeteer/stargazers
-[issues-shield]: https://img.shields.io/github/issues/StereoPT/InstaPuppeteer.svg?style=for-the-badge
-[issues-url]: https://github.com/StereoPT/InstaPuppeteer/issues
-[license-shield]: https://img.shields.io/github/license/StereoPT/InstaPuppeteer.svg?style=for-the-badge
-[license-url]: https://github.com/StereoPT/InstaPuppeteer/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/StereoPT/insta-puppeteer.svg?style=for-the-badge
+[contributors-url]: https://github.com/StereoPT/insta-puppeteer/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/StereoPT/insta-puppeteer.svg?style=for-the-badge
+[forks-url]: https://github.com/StereoPT/insta-puppeteer/network/members
+[stars-shield]: https://img.shields.io/github/stars/StereoPT/insta-puppeteer.svg?style=for-the-badge
+[stars-url]: https://github.com/StereoPT/insta-puppeteer/stargazers
+[issues-shield]: https://img.shields.io/github/issues/StereoPT/insta-puppeteer.svg?style=for-the-badge
+[issues-url]: https://github.com/StereoPT/insta-puppeteer/issues
+[license-shield]: https://img.shields.io/github/license/StereoPT/insta-puppeteer.svg?style=for-the-badge
+[license-url]: https://github.com/StereoPT/insta-puppeteer/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/stereopt
+[linkedin-url]: https://linkedin.com/in/guidosp
 
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
