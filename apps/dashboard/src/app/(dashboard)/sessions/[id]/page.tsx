@@ -1,5 +1,6 @@
 import { GetSession } from "@/actions/sessions/getSession";
 import { PageHeader } from "@/components/PageHeader";
+import { ReRunSessionDialog } from "@/components/sessions/ReRunSessionDialog";
 import { UserSessionDetails } from "@/components/sessions/UserSessionDetails";
 import { KEYS } from "@/constants/queryKeys";
 import { getQueryClient } from "@/lib/getQueryClient";
@@ -21,7 +22,10 @@ const SessionDetailsPage = async ({ params }: SessionDetailsPageProps) => {
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <div className="flex flex-1 flex-col h-full">
-        <PageHeader goBack title="Session Details" />
+        <div className="flex justify-between">
+          <PageHeader goBack title="Session Details" />
+          <ReRunSessionDialog sessionId={id} />
+        </div>
         <div className="h-full py-6">
           <UserSessionDetails sessionId={id} />
         </div>
