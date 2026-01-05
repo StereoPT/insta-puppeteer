@@ -16,7 +16,7 @@
     "@insta-puppeteer/ui": "workspace:*",
     "@tanstack/react-query": "^5.85.5",
     "@tanstack/react-query-devtools": "^5.85.5",
-    "lucide-react": "^0.475.0",
+    "lucide-react": "^0.562.0",
     "next": "15.5.9",
     "next-auth": "^5.0.0-beta.29",
     "nextjs-toploader": "^3.8.16",

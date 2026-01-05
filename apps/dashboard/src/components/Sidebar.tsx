@@ -13,6 +13,7 @@ import {
   SidebarRail,
 } from "@insta-puppeteer/ui/components/sidebar";
 import {
+  ClockFadingIcon,
   CogIcon,
   ImagesIcon,
   Instagram,
@@ -47,6 +48,11 @@ const groupRoutes: GroupedRoute[] = [
         icon: CogIcon,
         title: "Automate",
         url: ROUTES.automate,
+      },
+      {
+        icon: ClockFadingIcon,
+        title: "Sessions",
+        url: ROUTES.sessions,
       },
       {
         icon: ImagesIcon,
