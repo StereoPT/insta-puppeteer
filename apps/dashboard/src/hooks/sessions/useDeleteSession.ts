@@ -16,7 +16,7 @@ export const useDeleteSession = (id: string) => {
     onSuccess: () => {
       toast.success("Session deleted", { id: toastID });
       queryClient.invalidateQueries({ queryKey: KEYS.sessions });
-      queryClient.invalidateQueries({ queryKey: ["posts"] });
+      queryClient.invalidateQueries({ queryKey: KEYS.posts });
     },
     onError: () => {
       toast.error("Failed to delete session", { id: toastID });

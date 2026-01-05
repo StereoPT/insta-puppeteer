@@ -1,6 +1,6 @@
 "use client";
 
-import { useDeletePost } from "@/hooks/useDeletePost";
+import { useDeletePost } from "@/hooks/posts/useDeletePost";
 import {
   AlertDialog,
   AlertDialogAction,

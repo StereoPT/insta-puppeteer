@@ -1,4 +1,5 @@
 import { DeletePost } from "@/actions/deletePost";
+import { KEYS } from "@/constants/queryKeys";
 import { getQueryClient } from "@/lib/getQueryClient";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
@@ -14,7 +15,7 @@ export const useDeletePost = (id: string, postId: string) => {
     },
     onSuccess: () => {
       toast.success("Post deleted", { id: toastId });
-      queryClient.invalidateQueries({ queryKey: ["posts"] });
+      queryClient.invalidateQueries({ queryKey: KEYS.posts });
     },
     onError: () => {
       toast.error("Failed to delete post", { id: toastId });

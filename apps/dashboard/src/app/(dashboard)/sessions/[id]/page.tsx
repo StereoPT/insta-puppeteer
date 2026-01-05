@@ -1,27 +1,33 @@
-import { GetPosts } from "@/actions/getPosts";
+import { GetSession } from "@/actions/sessions/getSession";
 import { PageHeader } from "@/components/PageHeader";
-import { UserPosts } from "@/components/posts/UserPosts";
+import { UserSessionDetails } from "@/components/sessions/UserSessionDetails";
 import { KEYS } from "@/constants/queryKeys";
 import { getQueryClient } from "@/lib/getQueryClient";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 
-const PostsPage = async () => {
+type SessionDetailsPageProps = {
+  params: Promise<{ id: string }>;
+};
+
+const SessionDetailsPage = async ({ params }: SessionDetailsPageProps) => {
+  const { id } = await params;
+
   const queryClient = getQueryClient();
   await queryClient.prefetchQuery({
-    queryKey: KEYS.posts,
-    queryFn: () => GetPosts(),
+    queryKey: KEYS.session(id),
+    queryFn: () => GetSession(id),
   });
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <div className="flex flex-1 flex-col h-full">
-        <PageHeader description="List of your Liked Posts" title="Posts" />
+        <PageHeader goBack title="Session Details" />
         <div className="h-full py-6">
-          <UserPosts />
+          <UserSessionDetails sessionId={id} />
         </div>
       </div>
     </HydrationBoundary>
   );
 };
 
-export default PostsPage;
+export default SessionDetailsPage;
