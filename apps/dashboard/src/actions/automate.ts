@@ -18,7 +18,7 @@ const ExecuteAutomation = async ({
     password,
     userAgent:
       "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36",
-    headless: true,
+    headless: false,
     viewport: { width: 1280, height: 860 },
   };
 
@@ -36,6 +36,10 @@ const ExecuteAutomation = async ({
     });
   } catch (error) {
     console.error("Automation error:", error);
+    await prisma.session.update({
+      where: { id: sessionId },
+      data: { status: "FAILED" },
+    });
   } finally {
     await automator.close();
   }
