@@ -1,8 +1,11 @@
 "use client";
 
+import { DataTable } from "@/components/dataTable/DataTable";
 import { ErrorAlert } from "@/components/ErrorAlert";
+import { columns } from "@/components/sessions/columns";
 import { ROUTES } from "@/constants/routes";
 import { useGetSessions } from "@/hooks/sessions/useGetSessions";
+import { fuzzyFilterFn } from "@/lib/dataTable";
 import { Button } from "@insta-puppeteer/ui/components/button";
 import {
   Empty,
@@ -48,8 +51,17 @@ export const UserSessions = () => {
   }
 
   return (
-    <div>
-      <pre>{JSON.stringify(sessions, null, 2)}</pre>
-    </div>
+    <DataTable
+      columns={columns}
+      config={{
+        filters: {
+          search: {
+            filterFn: fuzzyFilterFn(["hashtag"]),
+            placeholder: "Search session...",
+          },
+        },
+      }}
+      data={sessions}
+    />
   );
 };
