@@ -1,5 +1,5 @@
 import { DeletePostAlert } from "@/components/posts/DeletePostAlert";
-import type { PostWithSession } from "@/types/posts";
+import type { Post } from "@insta-puppeteer/database";
 import { Badge } from "@insta-puppeteer/ui/components/badge";
 import {
   Card,
@@ -26,7 +26,7 @@ export const PostCardSkelleton = () => {
 };
 
 type PostCardProps = {
-  post: PostWithSession;
+  post: Post & { session?: { hashtag: string } };
   canDelete?: boolean;
 };
 
@@ -35,9 +35,11 @@ export const PostCard = ({ post, canDelete = true }: PostCardProps) => {
     <Card className="relative w-[350px] pb-0 group" key={post.id}>
       <CardHeader>
         <CardTitle>@{post.username}</CardTitle>
-        <CardDescription>
-          <Badge>#{post.session.hashtag}</Badge>
-        </CardDescription>
+        {post.session && (
+          <CardDescription>
+            <Badge>#{post.session.hashtag}</Badge>
+          </CardDescription>
+        )}
       </CardHeader>
       <CardContent className="h-[475px] px-0 bg-muted rounded-b-xl">
         <a href={post.postLink} target="_blank">
@@ -45,7 +47,7 @@ export const PostCard = ({ post, canDelete = true }: PostCardProps) => {
             alt={post.postId}
             className="w-full h-full object-cover overflow-hidden rounded-b-xl"
             height={475}
-            src={`images/${post.postId}.png`}
+            src={`/images/${post.postId}.png`}
             unoptimized
             width={350}
           />

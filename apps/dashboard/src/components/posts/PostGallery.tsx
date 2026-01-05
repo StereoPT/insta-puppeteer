@@ -1,11 +1,13 @@
 "use client";
 
 import { PostCard } from "@/components/posts/PostCard";
-import { usePosts } from "@/hooks/usePosts";
+import type { Post } from "@insta-puppeteer/database";
 
-export const PostGallery = () => {
-  const { data: posts } = usePosts();
+type PostGalleryProps = {
+  posts: Post[];
+};
 
+export const PostGallery = ({ posts }: PostGalleryProps) => {
   return (
     <div className="grid grid-cols-4 gap-4">
       {posts?.map((post) => (
