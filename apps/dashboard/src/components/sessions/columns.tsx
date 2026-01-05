@@ -51,7 +51,12 @@ export const columns: ColumnDef<SessionWithCount>[] = [
   {
     accessorKey: "_count.posts",
     header: "Posts",
-    size: 150,
+    size: 100,
+    cell: ({ row }) => {
+      const { posts } = row.original._count;
+
+      return <Badge variant="outline">{posts}</Badge>;
+    },
   },
   {
     accessorKey: "actions",

@@ -40,3 +40,16 @@ model Post {
 
   @@unique([id])
 }
+
+model Hashtag {
+  id            String        @id @default(uuid())
+
+  tag           String
+  active        Boolean       @default(true)
+  priority      Int
+
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  @@unique([tag])
+}
