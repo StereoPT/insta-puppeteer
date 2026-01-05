@@ -4,4 +4,5 @@ export const ROUTES = {
   session: (id: string) => `/sessions/${id}` as const,
   sessions: "/sessions",
   posts: "/posts",
+  hashtags: "/hashtags",
 } as const;

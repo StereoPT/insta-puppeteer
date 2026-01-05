@@ -15,6 +15,7 @@ import {
 import {
   ClockFadingIcon,
   CogIcon,
+  HashIcon,
   ImagesIcon,
   Instagram,
   LayoutDashboard,
@@ -58,6 +59,11 @@ const groupRoutes: GroupedRoute[] = [
         icon: ImagesIcon,
         title: "Posts",
         url: ROUTES.posts,
+      },
+      {
+        icon: HashIcon,
+        title: "Hashtags",
+        url: ROUTES.hashtags,
       },
     ],
   },

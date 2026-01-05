@@ -31,7 +31,7 @@ const EmptyUserSessions = () => {
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
-        <Button asChild size="sm" variant="outline">
+        <Button asChild>
           <Link href={ROUTES.automate}>Create Session</Link>
         </Button>
       </EmptyContent>

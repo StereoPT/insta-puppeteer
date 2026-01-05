@@ -6,4 +6,6 @@ export const KEYS = {
   session: (id: string) => [SESSIONS, id],
 
   posts: [POSTS],
+
+  hashtags: ["hashtags"],
 };
