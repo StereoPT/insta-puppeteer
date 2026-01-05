@@ -1,7 +1,8 @@
 "use client";
 
-import { cn } from "@insta-puppeteer/ui/lib/utils";
 import type * as React from "react";
+
+import { cn } from "@insta-puppeteer/ui/lib/utils";
 
 function Table({ className, ...props }: React.ComponentProps<"table">) {
   return (

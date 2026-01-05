@@ -1,8 +1,9 @@
 "use client";
 
-import { cn } from "@insta-puppeteer/ui/lib/utils";
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
 import type * as React from "react";
+
+import { cn } from "@insta-puppeteer/ui/lib/utils";
 
 function Avatar({
   className,

@@ -1,8 +1,9 @@
 "use client";
 
-import { cn } from "@insta-puppeteer/ui/lib/utils";
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
 import type * as React from "react";
+
+import { cn } from "@insta-puppeteer/ui/lib/utils";
 
 function ScrollArea({
   className,

@@ -1,23 +1,22 @@
 import {
-  type Button,
-  buttonVariants,
-} from "@insta-puppeteer/ui/components/button";
-import { cn } from "@insta-puppeteer/ui/lib/utils";
-import {
   ChevronLeftIcon,
   ChevronRightIcon,
   MoreHorizontalIcon,
 } from "lucide-react";
 import type * as React from "react";
 
+import {
+  buttonVariants,
+  type Button,
+} from "@insta-puppeteer/ui/components/button";
+import { cn } from "@insta-puppeteer/ui/lib/utils";
+
 function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
   return (
-    // biome-ignore lint/a11y/useSemanticElements: Shadcn/ui
     <nav
       aria-label="pagination"
       className={cn("mx-auto flex w-full justify-center", className)}
       data-slot="pagination"
-      // biome-ignore lint/a11y/noRedundantRoles: Shadcn/ui
       role="navigation"
       {...props}
     />

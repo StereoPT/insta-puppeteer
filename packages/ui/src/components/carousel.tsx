@@ -1,12 +1,13 @@
 "use client";
 
-import { Button } from "@insta-puppeteer/ui/components/button";
-import { cn } from "@insta-puppeteer/ui/lib/utils";
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import * as React from "react";
+
+import { Button } from "@insta-puppeteer/ui/components/button";
+import { cn } from "@insta-puppeteer/ui/lib/utils";
 
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
@@ -117,7 +118,6 @@ function Carousel({
         canScrollNext,
       }}
     >
-      {/** biome-ignore lint/a11y/useSemanticElements: Shadcn/ui */}
       <div
         aria-roledescription="carousel"
         className={cn("relative", className)}
@@ -157,7 +157,6 @@ function CarouselItem({ className, ...props }: React.ComponentProps<"div">) {
   const { orientation } = useCarousel();
 
   return (
-    // biome-ignore lint/a11y/useSemanticElements: Shadcn/ui
     <div
       aria-roledescription="slide"
       className={cn(

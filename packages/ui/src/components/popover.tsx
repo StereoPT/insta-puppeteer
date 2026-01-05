@@ -1,8 +1,9 @@
 "use client";
 
-import { cn } from "@insta-puppeteer/ui/lib/utils";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
 import type * as React from "react";
+
+import { cn } from "@insta-puppeteer/ui/lib/utils";
 
 function Popover({
   ...props

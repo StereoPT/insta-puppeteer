@@ -1,8 +1,9 @@
 "use client";
 
-import { cn } from "@insta-puppeteer/ui/lib/utils";
 import * as ProgressPrimitive from "@radix-ui/react-progress";
 import type * as React from "react";
+
+import { cn } from "@insta-puppeteer/ui/lib/utils";
 
 function Progress({
   className,

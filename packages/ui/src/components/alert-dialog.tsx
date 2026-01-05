@@ -1,9 +1,10 @@
 "use client";
 
-import { buttonVariants } from "@insta-puppeteer/ui/components/button";
-import { cn } from "@insta-puppeteer/ui/lib/utils";
 import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
 import type * as React from "react";
+
+import { buttonVariants } from "@insta-puppeteer/ui/components/button";
+import { cn } from "@insta-puppeteer/ui/lib/utils";
 
 function AlertDialog({
   ...props

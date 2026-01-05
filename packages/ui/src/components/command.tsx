@@ -1,5 +1,9 @@
 "use client";
 
+import { Command as CommandPrimitive } from "cmdk";
+import { SearchIcon } from "lucide-react";
+import type * as React from "react";
+
 import {
   Dialog,
   DialogContent,
@@ -8,9 +12,6 @@ import {
   DialogTitle,
 } from "@insta-puppeteer/ui/components/dialog";
 import { cn } from "@insta-puppeteer/ui/lib/utils";
-import { Command as CommandPrimitive } from "cmdk";
-import { SearchIcon } from "lucide-react";
-import type * as React from "react";
 
 function Command({
   className,

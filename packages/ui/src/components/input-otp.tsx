@@ -1,9 +1,10 @@
 "use client";
 
-import { cn } from "@insta-puppeteer/ui/lib/utils";
 import { OTPInput, OTPInputContext } from "input-otp";
 import { MinusIcon } from "lucide-react";
 import * as React from "react";
+
+import { cn } from "@insta-puppeteer/ui/lib/utils";
 
 function InputOTP({
   className,
@@ -67,9 +68,6 @@ function InputOTPSlot({
 
 function InputOTPSeparator({ ...props }: React.ComponentProps<"div">) {
   return (
-    // biome-ignore lint/a11y/useFocusableInteractive: Shadcn/ui
-    // biome-ignore lint/a11y/useSemanticElements: Shadcn/ui
-    // biome-ignore lint/a11y/useAriaPropsForRole: Shadcn/ui
     <div data-slot="input-otp-separator" role="separator" {...props}>
       <MinusIcon />
     </div>
