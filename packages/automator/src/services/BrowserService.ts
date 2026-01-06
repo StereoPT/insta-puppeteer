@@ -1,7 +1,22 @@
 import type { InstagramConfig } from "@insta-puppeteer/automator/types";
+import { existsSync } from "node:fs";
 import path from "node:path";
 import type { Browser, Page } from "puppeteer";
 import puppeteer from "puppeteer";
+
+export const findRoot = (startDir: string = __dirname): string => {
+  let currentDir = startDir;
+
+  while (currentDir !== path.parse(currentDir).root) {
+    if (existsSync(path.join(currentDir, "turbo.json"))) {
+      return currentDir;
+    }
+
+    currentDir = path.dirname(currentDir);
+  }
+
+  throw new Error("Unable to find Monorepo root (no turbo.json found)");
+};
 
 export class BrowserService {
   private browser: Browser | null = null;
@@ -13,11 +28,9 @@ export class BrowserService {
   constructor(private config: InstagramConfig) {}
 
   async launch() {
-    const userDataDir = path.join(
-      process.cwd(),
-      "profiles",
-      this.config.profileName,
-    );
+    const root = findRoot(process.cwd());
+
+    const userDataDir = path.join(root, "profiles", this.config.profileName);
 
     this.browser = await puppeteer.launch({
       headless: this.config.headless ?? false,
