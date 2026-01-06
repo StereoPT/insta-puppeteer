@@ -22,9 +22,9 @@ export const UserSessionDetails = ({ sessionId }: UserSessionDetailsProps) => {
       <div className="mb-8 grid gap-4 sm:grid-cols-3 lg:grid-cols-6">
         <Card>
           <CardContent>
-            <div className="text-sm text-muted-foreground">Hashtag</div>
+            <div className="text-sm text-muted-foreground">Automation</div>
             <div className="mt-2 text-2xl font-semibold">
-              #{session.hashtag}
+              {session.hashtag ? `#${session.hashtag}` : "For You"}
             </div>
           </CardContent>
         </Card>

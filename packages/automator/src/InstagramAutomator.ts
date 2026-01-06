@@ -42,6 +42,29 @@ export class InstagramAutomator {
     console.log(` - Processing hashtag: #${hashtag}`);
 
     await this.postService.navigateToHashtag(hashtag);
+    const processedPosts = await this.processPosts(sessionId, maxPosts);
+
+    return processedPosts;
+  }
+
+  async processForYou(sessionId: string, maxPosts?: number) {
+    if (!this.postService) {
+      throw new Error("Automator not initialized. Call initialize() first.");
+    }
+
+    console.log(" - Processing For You Page");
+
+    await this.postService.navigateToForYou();
+    const processedPosts = await this.processPosts(sessionId, maxPosts);
+
+    return processedPosts;
+  }
+
+  private async processPosts(sessionId: string, maxPosts?: number) {
+    if (!this.postService) {
+      throw new Error("Automator not initialized. Call initialize() first.");
+    }
+
     const postLinks = await this.postService.getPostLinks();
 
     const processedPosts: ScrapedPost[] = [];
@@ -61,8 +84,10 @@ export class InstagramAutomator {
 
         await this.postService.likePost();
 
+        const rootDir = this.browserService.getRootDir();
         const scrapedData = await this.postService.scrapePostData(
           sessionId,
+          rootDir,
           postLink,
         );
         await this.databaseService.savePost(scrapedData);
@@ -76,8 +101,6 @@ export class InstagramAutomator {
         await this.postService.closePost();
       }
     }
-
-    return processedPosts;
   }
 
   async close() {

@@ -37,6 +37,9 @@
     "generate": {
       "dependsOn": ["^generate"],
       "cache": false
+    },
+    "automate": {
+      "cache": false
     }
   }
 }

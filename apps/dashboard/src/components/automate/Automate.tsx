@@ -1,89 +1,65 @@
 "use client";
 
+import { AutomateForYou } from "@/components/automate/AutomateForYou";
+import { AutomateHashtag } from "@/components/automate/AutomateHashtag";
 import { AutomatePostGallery } from "@/components/automate/AutomatePostGallery";
-import { ErrorAlert } from "@/components/ErrorAlert";
-import { useGetHashtags } from "@/hooks/hashtags/useGetHashtags";
-import { useAutomate } from "@/hooks/useAutomate";
-import { automateSchema, type AutomateSchemaType } from "@/schemas/automate";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Badge } from "@insta-puppeteer/ui/components/badge";
-import { Button } from "@insta-puppeteer/ui/components/button";
 import {
-  Form,
-  FormControl,
-  FormField,
-} from "@insta-puppeteer/ui/components/form";
-import { Input } from "@insta-puppeteer/ui/components/input";
-import { Loader2Icon, SendHorizontalIcon } from "lucide-react";
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@insta-puppeteer/ui/components/card";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@insta-puppeteer/ui/components/tabs";
 import { useSession } from "next-auth/react";
-import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 export const Automate = () => {
   const { data: session } = useSession();
-  const { data: hashtags } = useGetHashtags();
-  const { data: sessionId, mutate, isPending, isSuccess } = useAutomate();
 
-  const form = useForm<AutomateSchemaType>({
-    resolver: zodResolver(automateSchema),
-    defaultValues: {
-      hashtag: "",
-    },
-  });
+  const [sessionId, setSessionId] = useState<string>();
+  const [isSuccess, setIsSuccess] = useState(false);
 
-  const handleAutomate = (values: AutomateSchemaType) => {
-    mutate({
-      email: session?.user.email ?? "",
-      password: session?.user.password ?? "",
-      hashtag: values.hashtag,
-    });
-  };
-
-  if (!hashtags) {
-    return <ErrorAlert />;
+  if (!session) {
+    return null;
   }
 
   return (
     <div className="flex flex-col gap-8">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(handleAutomate)}>
-          <div className="flex flex-col gap-4 items-center">
-            <div className="flex w-full items-center justify-center gap-2">
-              <FormField
-                control={form.control}
-                name="hashtag"
-                render={({ field }) => (
-                  <FormControl>
-                    <Input
-                      autoComplete="off"
-                      className="max-w-md"
-                      placeholder="Hastag to Automate. e.g: anime"
-                      {...field}
-                    />
-                  </FormControl>
-                )}
+      <Card className="w-full max-w-lg mx-auto">
+        <CardHeader>
+          <CardTitle>Automate</CardTitle>
+          <CardDescription>Choose your automate mode below</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <Tabs defaultValue="hashtag">
+            <TabsList className="grid w-full grid-cols-2">
+              <TabsTrigger value="hashtag">Hashtag</TabsTrigger>
+              <TabsTrigger value="forYou">For You</TabsTrigger>
+            </TabsList>
+            <TabsContent className="space-y-4 mt-6" value="hashtag">
+              <AutomateHashtag
+                session={session}
+                setIsSuccess={setIsSuccess}
+                setSessionId={setSessionId}
               />
-              <Button disabled={isPending} type="submit">
-                {isPending ? (
-                  <Loader2Icon className="animate-spin" />
-                ) : (
-                  <SendHorizontalIcon />
-                )}
-              </Button>
-            </div>
-            <div>
-              {hashtags.slice(0, 5).map((hashtag) => (
-                <Badge
-                  className="cursor-pointer capitalize"
-                  key={hashtag.id}
-                  onClick={() => form.setValue("hashtag", hashtag.tag)}
-                >
-                  {hashtag.tag}
-                </Badge>
-              ))}
-            </div>
-          </div>
-        </form>
-      </Form>
+            </TabsContent>
+            <TabsContent className="space-y-4 mt-6" value="forYou">
+              <AutomateForYou
+                session={session}
+                setIsSuccess={setIsSuccess}
+                setSessionId={setSessionId}
+              />
+            </TabsContent>
+          </Tabs>
+        </CardContent>
+      </Card>
+
       {isSuccess && sessionId && <AutomatePostGallery sessionId={sessionId} />}
     </div>
   );

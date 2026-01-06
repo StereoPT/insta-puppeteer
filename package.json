@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "build": "turbo run build",
+    "automate": "turbo run automate --filter=@insta-puppeteer/automator",
     "dev": "turbo run dev",
     "dev:automator": "turbo run dev --filter=@insta-puppeteer/automator",
     "dev:dashboard": "turbo run dev --filter=@insta-puppeteer/dashboard",

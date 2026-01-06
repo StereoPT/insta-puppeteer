@@ -29,7 +29,7 @@ export const columns: ColumnDef<SessionWithCount>[] = [
       return (
         <Link href={ROUTES.session(id)}>
           <div className="flex flex-col">
-            <div className="font-medium capitalize">{hashtag}</div>
+            <div className="font-medium capitalize">{hashtag ?? "For You"}</div>
             <div className="text-xs text-muted-foreground">
               {format(createdAt, "PPP")}
             </div>

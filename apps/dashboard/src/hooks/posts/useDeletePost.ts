@@ -16,6 +16,7 @@ export const useDeletePost = (id: string, postId: string) => {
     onSuccess: () => {
       toast.success("Post deleted", { id: toastId });
       queryClient.invalidateQueries({ queryKey: KEYS.posts });
+      queryClient.invalidateQueries({ queryKey: KEYS.sessions });
     },
     onError: () => {
       toast.error("Failed to delete post", { id: toastId });
