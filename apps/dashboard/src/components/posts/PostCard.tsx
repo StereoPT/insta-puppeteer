@@ -35,7 +35,7 @@ export const PostCard = ({ post, canDelete = true }: PostCardProps) => {
     <Card className="relative w-[350px] pb-0 group" key={post.id}>
       <CardHeader>
         <CardTitle>@{post.username}</CardTitle>
-        {post.session && (
+        {post.session?.hashtag && (
           <CardDescription>
             <Badge>#{post.session.hashtag}</Badge>
           </CardDescription>
