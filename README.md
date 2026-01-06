@@ -150,6 +150,12 @@ InstaPuppeteer provides an intuitive web dashboard for managing your Instagram a
 - Configure target hashtags through the web interface
 - Monitor automation activity in real-time
 
+**For You Automation**: Automatically like posts from the For You page
+- Monitor automation activity in real-time
+
+**Hashtag Management**: Manage your most used Hashtags
+- Add, Remove and Toggle Active Hashtags
+
 ### Getting Started with Automation
 
 1. **Login**: Access the web dashboard at `http://localhost:3000/login`
@@ -163,12 +169,14 @@ InstaPuppeteer provides an intuitive web dashboard for managing your Instagram a
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Hashtag-based post liking automation
-- [x] Web-based dashboard interface
-- [x] SQLite database integration
+- [x] Improved Dashboard
+- [x] Hashtag Management
+- [x] For You Page Automation
 - [ ] Fix known issues
-- [ ] Improved Dashboard
-- [ ] Hashtag Management
+- [ ] Improve Post Scrapped Information
+  - Description
+  - Handle Reels 
+- [ ] Better Automation Settings (Headless Toggle)
 
 See the [open issues](https://github.com/StereoPT/InstaPuppeteer/issues) for a full list of proposed features (and known issues).
 
