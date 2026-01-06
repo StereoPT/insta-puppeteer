@@ -92,7 +92,7 @@ export const Sidebar = () => {
                 </div>
                 <div className="flex flex-col gap-0.5 leading-none">
                   <span className="font-semibold">InstaPuppeteer</span>
-                  <span className="">v2.0.0</span>
+                  <span className="">v4.0.0</span>
                 </div>
               </Link>
             </SidebarMenuButton>
