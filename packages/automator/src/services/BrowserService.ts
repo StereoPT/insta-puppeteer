@@ -21,6 +21,7 @@ export const findRoot = (startDir: string = __dirname): string => {
 export class BrowserService {
   private browser: Browser | null = null;
   private page: Page | null = null;
+  private rootDir: string | null = null;
 
   private _width = 1280;
   private _height = 860;
@@ -29,6 +30,7 @@ export class BrowserService {
 
   async launch() {
     const root = findRoot(process.cwd());
+    this.rootDir = root;
 
     const userDataDir = path.join(root, "profiles", this.config.profileName);
 
@@ -68,6 +70,14 @@ export class BrowserService {
       throw new Error("Browser not launched. Call launch() first.");
     }
     return this.page;
+  }
+
+  getRootDir() {
+    if (!this.rootDir) {
+      throw new Error("Root Dir not found!");
+    }
+
+    return this.rootDir;
   }
 
   async close() {

@@ -1,6 +1,7 @@
 import { delay } from "@insta-puppeteer/automator/services/DelayService";
 import type { PostData, ScrapedPost } from "@insta-puppeteer/automator/types";
 import { writeFileSync } from "node:fs";
+import path from "node:path";
 import type { Browser, Page } from "puppeteer";
 
 export class PostService {
@@ -66,6 +67,7 @@ export class PostService {
 
   async scrapePostData(
     sessionId: string,
+    rootDir: string,
     postData: PostData,
   ): Promise<ScrapedPost> {
     const username = await this.page.$eval(
@@ -83,10 +85,15 @@ export class PostService {
     await delay.wait("navigate");
 
     if (viewSource) {
-      writeFileSync(
-        `public/images/${postData.postId}.png`,
-        await viewSource.buffer(),
+      const imageLocation = path.join(
+        rootDir,
+        "apps",
+        "dashboard",
+        "public",
+        "images",
+        `${postData.postId}.png`,
       );
+      writeFileSync(imageLocation, await viewSource.buffer());
     }
 
     await imagePage.close();
