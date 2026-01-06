@@ -17,6 +17,14 @@ export class PostService {
     await delay.wait("navigate");
   }
 
+  async navigateToForYou(): Promise<void> {
+    const forYouPage = "https://www.instagram.com/explore/";
+    console.log(" - Navigating to For You Page");
+
+    await this.page.goto(forYouPage, { waitUntil: "networkidle0" });
+    await delay.wait("navigate");
+  }
+
   async getPostLinks(): Promise<PostData[]> {
     const postLinks = await this.page.$$eval("main div a", (links) =>
       links.map((link) => ({

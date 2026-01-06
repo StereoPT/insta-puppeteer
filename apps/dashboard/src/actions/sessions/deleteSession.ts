@@ -15,6 +15,6 @@ export const DeleteSession = async (id: string) => {
   }
 
   for (const post of deletedSession.posts) {
-    rmSync(path.join("public", "images", `${post.id}.png`));
+    rmSync(path.join("public", "images", `${post.postId}.png`));
   }
 };

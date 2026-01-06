@@ -3,7 +3,11 @@
 import { InstagramAutomator } from "@insta-puppeteer/automator";
 import { prisma } from "@insta-puppeteer/database";
 
-export type AutomateArgs = { email: string; password: string; hashtag: string };
+export type AutomateArgs = {
+  email: string;
+  password: string;
+  hashtag?: string;
+};
 export type ExecuteAutomationArgs = AutomateArgs & { sessionId: string };
 
 const ExecuteAutomation = async ({
@@ -29,7 +33,12 @@ const ExecuteAutomation = async ({
 
     await automator.login();
 
-    await automator.processHashtag(hashtag, sessionId, 8);
+    if (hashtag) {
+      await automator.processHashtag(hashtag, sessionId, 8);
+    } else {
+      await automator.processForYou(sessionId, 8);
+    }
+
     await prisma.session.update({
       where: { id: sessionId },
       data: { status: "COMPLETED" },
@@ -47,7 +56,7 @@ const ExecuteAutomation = async ({
 
 export const Automate = async ({ email, password, hashtag }: AutomateArgs) => {
   const session = await prisma.session.create({
-    data: { status: "IN_PROGRESS", hashtag },
+    data: { status: "IN_PROGRESS", hashtag: hashtag },
   });
 
   ExecuteAutomation({ email, password, hashtag, sessionId: session.id });
