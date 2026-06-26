@@ -42,12 +42,14 @@ export const PostCard = ({ post, canDelete = true }: PostCardProps) => {
         )}
       </CardHeader>
       <CardContent className="h-[475px] px-0 bg-muted rounded-b-xl">
-        <a href={post.postLink} target="_blank">
+        <a href={post.postLink} rel="noopener" target="_blank">
           <Image
             alt={post.postId}
-            className="w-full h-full object-cover overflow-hidden rounded-b-xl"
+            className="object-cover overflow-hidden rounded-b-xl"
             height={475}
+            loading="eager"
             src={`/images/${post.postId}.png`}
+            style={{ width: "auto", height: "auto" }}
             unoptimized
             width={350}
           />
