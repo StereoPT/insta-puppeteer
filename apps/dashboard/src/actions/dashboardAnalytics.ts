@@ -1,6 +1,6 @@
 "use server";
 
-import { prisma } from "@insta-puppeteer/database";
+import { prisma } from "@insta-puppeteer/database/server";
 
 export const DashboardAnalytics = async () => {
   const sessions = await prisma.session.count();

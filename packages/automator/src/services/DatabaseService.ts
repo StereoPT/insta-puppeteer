@@ -1,5 +1,5 @@
 import type { ScrapedPost } from "@insta-puppeteer/automator/types";
-import { prisma } from "@insta-puppeteer/database";
+import { prisma } from "@insta-puppeteer/database/server";
 
 export class DatabaseService {
   async savePost(postData: ScrapedPost) {

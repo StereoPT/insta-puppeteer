@@ -1,10 +1,10 @@
 {
-  "extends": "@insta-puppeteer/typescript-config/base.json",
+  "extends": "@insta-puppeteer/ts-config/base.json",
   "compilerOptions": {
-    "outDir": "./dist",
-    "rootDir": "./src",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
+    "outDir": "./dist",
+    "rootDir": "./src",
     "paths": {
       "@insta-puppeteer/automator/*": ["./src/*"]
     }

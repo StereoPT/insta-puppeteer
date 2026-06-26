@@ -1,6 +1,6 @@
 "use server";
 
-import { prisma } from "@insta-puppeteer/database";
+import { prisma } from "@insta-puppeteer/database/server";
 
 export const DeleteHashtag = async (id: string) => {
   const result = await prisma.hashtag.delete({ where: { id } });

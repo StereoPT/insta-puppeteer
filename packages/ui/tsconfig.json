@@ -1,11 +1,11 @@
 {
-  "extends": "@insta-puppeteer/typescript-config/react-library.json",
+  "extends": "@insta-puppeteer/ts-config/nextjs.json",
   "compilerOptions": {
-    "baseUrl": ".",
+    "strictNullChecks": true,
     "paths": {
       "@insta-puppeteer/ui/*": ["./src/*"]
     }
   },
-  "include": ["."],
-  "exclude": ["node_modules", "dist"]
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules"]
 }

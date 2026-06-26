@@ -1,6 +1,6 @@
 "use server";
 
-import { prisma } from "@insta-puppeteer/database";
+import { prisma } from "@insta-puppeteer/database/server";
 import { rmSync } from "node:fs";
 import path from "node:path";
 

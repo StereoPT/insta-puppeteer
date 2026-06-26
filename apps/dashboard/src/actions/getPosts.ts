@@ -1,6 +1,6 @@
 "use server";
 
-import { prisma } from "@insta-puppeteer/database";
+import { prisma } from "@insta-puppeteer/database/server";
 
 export const GetPosts = async () => {
   return await prisma.post.findMany({

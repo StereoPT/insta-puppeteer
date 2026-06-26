@@ -1,6 +1,7 @@
-import { InstagramAutomator } from "@insta-puppeteer/automator/InstagramAutomator";
-import { prisma } from "@insta-puppeteer/database";
 import "dotenv/config";
+
+import { InstagramAutomator } from "@insta-puppeteer/automator/InstagramAutomator";
+import { prisma } from "@insta-puppeteer/database/server";
 
 const config = {
   profileName: "stereopt",
