@@ -1,11 +1,9 @@
 "use client";
 
-import { DataTable } from "@/components/dataTable/DataTable";
 import { ErrorAlert } from "@/components/ErrorAlert";
 import { columns } from "@/components/sessions/columns";
 import { ROUTES } from "@/constants/routes";
 import { useGetSessions } from "@/hooks/sessions/useGetSessions";
-import { fuzzyFilterFn } from "@/lib/dataTable";
 import { Button } from "@insta-puppeteer/ui/components/button";
 import {
   Empty,
@@ -15,6 +13,7 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@insta-puppeteer/ui/components/empty";
+import { DataTable } from "@stereopt/data-table";
 import { ClockFadingIcon } from "lucide-react";
 import Link from "next/link";
 
@@ -54,11 +53,9 @@ export const UserSessions = () => {
     <DataTable
       columns={columns}
       config={{
-        filters: {
-          search: {
-            filterFn: fuzzyFilterFn(["hashtag"]),
-            placeholder: "Search session...",
-          },
+        search: {
+          filterFields: ["hashtag"],
+          placeholder: "Search session...",
         },
       }}
       data={sessions}

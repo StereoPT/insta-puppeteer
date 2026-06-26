@@ -9,12 +9,11 @@ import {
   EmptyTitle,
 } from "@insta-puppeteer/ui/components/empty";
 
-import { DataTable } from "@/components/dataTable/DataTable";
 import { ErrorAlert } from "@/components/ErrorAlert";
 import { AddHashtagDialog } from "@/components/hashtags/AddHashtagDialog";
 import { columns } from "@/components/hashtags/columns";
 import { useGetHashtags } from "@/hooks/hashtags/useGetHashtags";
-import { fuzzyFilterFn } from "@/lib/dataTable";
+import { DataTable } from "@stereopt/data-table";
 import { HashIcon } from "lucide-react";
 
 const EmptyUserHashtags = () => {
@@ -51,11 +50,9 @@ export const UserHashtags = () => {
     <DataTable
       columns={columns}
       config={{
-        filters: {
-          search: {
-            filterFn: fuzzyFilterFn(["tag"]),
-            placeholder: "Search hashtag...",
-          },
+        search: {
+          filterFields: ["tag"],
+          placeholder: "Search hashtag...",
         },
       }}
       data={hashtags}
