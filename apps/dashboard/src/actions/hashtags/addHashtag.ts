@@ -4,7 +4,7 @@ import {
   addHashtagSchema,
   type addHashtagSchemaType,
 } from "@/schemas/hashtags";
-import { prisma } from "@insta-puppeteer/database";
+import { prisma } from "@insta-puppeteer/database/server";
 
 export const AddHastag = async (formValues: addHashtagSchemaType) => {
   const { success, data } = await addHashtagSchema.safeParseAsync(formValues);

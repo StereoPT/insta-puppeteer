@@ -1,7 +1,7 @@
 {
-  "extends": "@insta-puppeteer/typescript-config/nextjs.json",
+  "extends": "@insta-puppeteer/ts-config/nextjs.json",
   "compilerOptions": {
-    "plugins": [{ "name": "next" }],
+    "strictNullChecks": true,
     "paths": {
       "@/*": ["./src/*"]
     }
@@ -11,7 +11,8 @@
     "**/*.tsx",
     "next-env.d.ts",
     "next.config.js",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }

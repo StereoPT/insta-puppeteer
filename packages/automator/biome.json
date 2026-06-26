@@ -1,6 +1,7 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.1.4/schema.json",
-  "extends": "//",
+  "$schema": "https://biomejs.dev/schemas/2.4.16/schema.json",
+  "root": false,
+  "extends": ["@insta-puppeteer/biome-config/base"],
   "linter": {
     "rules": {
       "suspicious": {

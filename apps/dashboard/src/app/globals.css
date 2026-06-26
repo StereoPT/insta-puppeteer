@@ -1,4 +1,21 @@
-@import '@insta-puppeteer/ui/globals.css';
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+@import '@stereopt/data-table/tailwind-source.css';
+@import '@insta-puppeteer/ui/styles.css';
+@import '@insta-puppeteer/ui/tailwind-source.css';
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
 
 @utility container {
   margin-inline: auto;

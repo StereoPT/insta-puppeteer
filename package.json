@@ -1,43 +1,30 @@
 {
   "name": "insta-puppeteer",
   "version": "4.0.0",
+  "type": "module",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "scripts": {
-    "build": "turbo run build",
-    "automate": "turbo run automate --filter=@insta-puppeteer/automator",
     "dev": "turbo run dev",
+    "build": "turbo run build",
     "dev:automator": "turbo run dev --filter=@insta-puppeteer/automator",
     "dev:dashboard": "turbo run dev --filter=@insta-puppeteer/dashboard",
-    "db:migrate:deploy": "turbo run db:migrate:deploy",
-    "db:migrate:dev": "turbo run db:migrate:dev",
-    "db:push": "turbo run db:push",
-    "db:seed": "turbo run db:seed",
-    "generate": "turbo run generate",
     "format": "turbo format --continue --",
     "format:fix": "turbo format --continue -- --write",
     "lint": "turbo lint --continue --",
     "lint:fix": "turbo lint --continue -- --write",
-    "typecheck": "turbo run typecheck"
-  },
-  "prisma": {
-    "schema": "packages/database/prisma/schema.prisma",
-    "seed": "tsx packages/database/src/seed.ts"
-  },
-  "dependencies": {
-    "@prisma/client": "^6.14.0"
+    "typecheck": "turbo run typecheck",
+    "db:generate": "turbo run db:generate --filter=@insta-puppeteer/database",
+    "db:migrate": "turbo run db:migrate --filter=@insta-puppeteer/database --",
+    "shadcn": "turbo run shadcn --filter=@insta-puppeteer/ui --",
+    "shadcn:add": "turbo run shadcn:add --filter=@insta-puppeteer/ui --"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.1.4",
-    "prisma": "^6.14.0",
-    "turbo": "^2.7.2",
-    "typescript": "5.9.3"
+    "@biomejs/biome": "2.4.16",
+    "turbo": "^2.9.17",
+    "typescript": "^6.0.3"
   },
+  "packageManager": "pnpm@10.33.2",
   "engines": {
     "node": ">=18"
-  },
-  "packageManager": "yarn@4.7.0"
+  }
 }

@@ -13,11 +13,11 @@ import {
   SidebarRail,
 } from "@insta-puppeteer/ui/components/sidebar";
 import {
+  Camera,
   ClockFadingIcon,
   CogIcon,
   HashIcon,
   ImagesIcon,
-  Instagram,
   LayoutDashboard,
   type LucideIcon,
 } from "lucide-react";
@@ -88,7 +88,7 @@ export const Sidebar = () => {
             <SidebarMenuButton asChild size="lg">
               <Link href={ROUTES.home}>
                 <div className="flex aspect-square size-8 items-center justify-center rounded-lg text-sidebar-primary-foreground bg-gradient-to-r from-indigo-500 to-indigo-600">
-                  <Instagram className="stroke-white" size={16} />
+                  <Camera className="stroke-white" size={16} />
                 </div>
                 <div className="flex flex-col gap-0.5 leading-none">
                   <span className="font-semibold">InstaPuppeteer</span>

@@ -1,6 +1,6 @@
 "use server";
 
-import { prisma } from "@insta-puppeteer/database";
+import { prisma } from "@insta-puppeteer/database/server";
 
 export const GetAutomatePosts = async (sessionId: string) => {
   return await prisma.session.findUnique({

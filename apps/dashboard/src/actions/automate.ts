@@ -1,7 +1,7 @@
 "use server";
 
 import { InstagramAutomator } from "@insta-puppeteer/automator";
-import { prisma } from "@insta-puppeteer/database";
+import { prisma } from "@insta-puppeteer/database/server";
 
 export type AutomateArgs = {
   email: string;
