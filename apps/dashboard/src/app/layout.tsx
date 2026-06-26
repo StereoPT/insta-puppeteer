@@ -7,7 +7,7 @@ import { cn } from "@insta-puppeteer/ui/lib/utils";
 import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: "Insta-Puppeteer | Dashboard",
@@ -20,7 +20,7 @@ type RootLayoutProps = Readonly<{
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang="en">
-      <body className={cn(inter.className, "antialiased")}>
+      <body className={cn("antialiased", "font-sans", inter.variable)}>
         <NextTopLoader color="#6366f1" showSpinner={false} />
         <AppProviders>{children}</AppProviders>
         <Toaster richColors />

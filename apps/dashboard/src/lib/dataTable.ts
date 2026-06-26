@@ -20,7 +20,6 @@ export const fuzzyFilterFn =
     return itemRank.passed;
   };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const dateBetweenFilterFn: FilterFn<any> = (row, columnId, value) => {
   const date = row.getValue(columnId) as Date;
   const { from: start, to: end } = value;
