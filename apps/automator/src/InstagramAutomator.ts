@@ -6,6 +6,7 @@ import type {
   InstagramConfig,
   ScrapedPost,
 } from "@insta-puppeteer/automator/types";
+import { prisma } from "@insta-puppeteer/database/server";
 
 export class InstagramAutomator {
   private browserService: BrowserService;
@@ -100,6 +101,32 @@ export class InstagramAutomator {
         console.error(`Error processing post ${postLink.postId}:`, error);
         await this.postService.closePost();
       }
+    }
+  }
+
+  async run(sessionId: string, hashtag?: string) {
+    try {
+      await this.initialize();
+      await this.login();
+
+      if (hashtag) {
+        await this.processHashtag(hashtag, sessionId, 8);
+      } else {
+        await this.processForYou(sessionId, 8);
+      }
+
+      await prisma.session.update({
+        where: { id: sessionId },
+        data: { status: "COMPLETED" },
+      });
+    } catch (error) {
+      console.error("Automation error:", error);
+      await prisma.session.update({
+        where: { id: sessionId },
+        data: { status: "FAILED" },
+      });
+    } finally {
+      await this.close();
     }
   }
 

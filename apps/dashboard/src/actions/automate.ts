@@ -1,65 +1,19 @@
 "use server";
 
-import { InstagramAutomator } from "@insta-puppeteer/automator";
-import { prisma } from "@insta-puppeteer/database/server";
-
 export type AutomateArgs = {
   email: string;
   password: string;
   hashtag?: string;
 };
-export type ExecuteAutomationArgs = AutomateArgs & { sessionId: string };
 
-const ExecuteAutomation = async ({
-  email,
-  password,
-  hashtag,
-  sessionId,
-}: ExecuteAutomationArgs) => {
-  const config = {
-    profileName: "stereopt",
-    email,
-    password,
-    userAgent:
-      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36",
-    headless: false,
-    viewport: { width: 1280, height: 860 },
-  };
-
-  const automator = new InstagramAutomator(config);
-
-  try {
-    await automator.initialize();
-
-    await automator.login();
-
-    if (hashtag) {
-      await automator.processHashtag(hashtag, sessionId, 8);
-    } else {
-      await automator.processForYou(sessionId, 8);
-    }
-
-    await prisma.session.update({
-      where: { id: sessionId },
-      data: { status: "COMPLETED" },
-    });
-  } catch (error) {
-    console.error("Automation error:", error);
-    await prisma.session.update({
-      where: { id: sessionId },
-      data: { status: "FAILED" },
-    });
-  } finally {
-    await automator.close();
-  }
-};
-
-export const Automate = async ({ email, password, hashtag }: AutomateArgs) => {
-  const session = await prisma.session.create({
-    data: { status: "IN_PROGRESS", hashtag: hashtag },
+export const Automate = async ({ hashtag }: AutomateArgs) => {
+  const response = await fetch(`${process.env.AUTOMATOR_URL}/automate`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ hashtag }),
   });
 
-  ExecuteAutomation({ email, password, hashtag, sessionId: session.id });
+  const { sessionId } = await response.json();
 
-  return session.id;
+  return sessionId;
 };

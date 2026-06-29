@@ -12,11 +12,6 @@
       "cache": false,
       "persistent": true
     },
-    "@insta-puppeteer/dashboard#dev": {
-      "dependsOn": ["@insta-puppeteer/automator#build"],
-      "cache": false,
-      "persistent": true
-    },
     "format": {
       "dependsOn": ["^format"]
     },
