@@ -13,7 +13,6 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@insta-puppeteer/automator": "workspace:*",
     "@insta-puppeteer/database": "workspace:*",
     "@insta-puppeteer/ui": "workspace:*",
     "@hookform/resolvers": "^5.4.0",
