@@ -14,7 +14,7 @@ app.post("/automate", async (req, res) => {
   const { hashtag } = req.body;
 
   const config = {
-    profileName: "stereopt",
+    profileName: process.env.PROFILE_NAME ?? "",
     email: process.env.EMAIL ?? "",
     password: process.env.PASSWORD ?? "",
     userAgent:

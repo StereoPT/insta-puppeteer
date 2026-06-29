@@ -48,6 +48,9 @@ export class BrowserService {
       ],
     });
 
+    const existingPages = await this.browser.pages();
+    await Promise.all(existingPages.map((p) => p.close()));
+
     this.page = await this.browser.newPage();
 
     if (this.config.userAgent) {
