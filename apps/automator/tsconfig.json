@@ -1,8 +1,8 @@
 {
   "extends": "@insta-puppeteer/ts-config/base.json",
   "compilerOptions": {
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "declaration": false,
     "declarationMap": false,
     "outDir": "./dist",
