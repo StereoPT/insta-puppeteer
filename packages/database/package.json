@@ -14,7 +14,7 @@
     }
   },
   "scripts": {
-    "build": "pnpm db:generate && tsc",
+    "build": "pnpm db:generate && tsup",
     "db:generate": "prisma generate --config prisma.config.ts",
     "db:migrate": "prisma migrate dev --config prisma.config.ts",
     "format": "biome format .",
@@ -33,6 +33,7 @@
     "@insta-puppeteer/ts-config": "workspace:*",
     "@types/node": "^25",
     "prisma": "^7.4.0",
+    "tsup": "^8.5.1",
     "typescript": "^5.9.3"
   }
 }
