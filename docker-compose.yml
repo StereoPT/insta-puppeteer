@@ -1,0 +1,22 @@
+services:
+  automator:
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: apps/automator/Dockerfile
+    ports:
+      - "3200:3200"
+    env_file:
+      - apps/automator/.env
+    environment:
+      HEADLESS: "true"
+      PROFILES_DIR: /data/profiles
+      IMAGES_DIR: /data/images
+      DATABASE_URL: file:/data/db/dev.db
+      PROFILE_NAME: stereopt-linux
+    volumes:
+      - ./profiles:/data/profiles
+      - ./apps/dashboard/public/images:/data/images
+      - ./packages/database/prisma:/data/db
+    restart: unless-stopped
+

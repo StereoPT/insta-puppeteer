@@ -20,12 +20,15 @@ export class BrowserService {
 
     this.browser = await puppeteer.launch({
       headless: this.config.headless ?? false,
+      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH,
       userDataDir,
       defaultViewport: this.config.viewport ?? {
         width: this._width,
         height: this._height,
       },
       args: [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
         "--no-first-run",
         "--no-default-browser-check",
         `--window-size=${this.config.viewport?.width ?? this._width},${this.config.viewport?.height ?? this._height}`,

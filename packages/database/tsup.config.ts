@@ -6,5 +6,5 @@ export default defineConfig({
   outExtension: () => ({ js: ".js" }),
   outDir: "dist",
   clean: true,
-  external: ["better-sqlite3"],
+  external: ["better-sqlite3", "@prisma/adapter-better-sqlite3"],
 });
