@@ -67,7 +67,6 @@ export class PostService {
 
   async scrapePostData(
     sessionId: string,
-    rootDir: string,
     postData: PostData,
   ): Promise<ScrapedPost> {
     const username = await this.page.$eval(
@@ -85,14 +84,10 @@ export class PostService {
     await delay.wait("navigate");
 
     if (viewSource) {
-      const imageLocation = path.join(
-        rootDir,
-        "apps",
-        "dashboard",
-        "public",
-        "images",
-        `${postData.postId}.png`,
-      );
+      const imagesDir = process.env.IMAGES_DIR;
+      if (!imagesDir) throw new Error("IMAGES_DIR env var is required");
+
+      const imageLocation = path.join(imagesDir, `${postData.postId}.png`);
       writeFileSync(imageLocation, await viewSource.buffer());
     }
 
