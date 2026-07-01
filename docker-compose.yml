@@ -1,5 +1,6 @@
 services:
   automator:
+    container_name: automator
     platform: linux/amd64
     build:
       context: .
@@ -19,4 +20,32 @@ services:
       - ./apps/dashboard/public/images:/data/images
       - ./packages/database/prisma:/data/db
     restart: unless-stopped
+    networks:
+      - insta-puppeteer
 
+  dashboard:
+    container_name: dashboard
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: apps/dashboard/Dockerfile
+    ports:
+      - "3000:3000"
+    env_file:
+      - apps/dashboard/.env
+    environment:
+      DATABASE_URL: file:/data/db/dev.db
+      AUTOMATOR_URL: http://automator:3200
+      IMAGES_DIR: /data/images
+    volumes:
+      - ./apps/dashboard/public/images:/data/images
+      - ./packages/database/prisma:/data/db
+    depends_on:
+      - automator
+    restart: unless-stopped
+    networks:
+      - insta-puppeteer
+
+networks:
+  insta-puppeteer:
+    driver: bridge

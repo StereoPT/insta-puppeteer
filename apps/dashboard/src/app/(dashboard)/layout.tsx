@@ -4,11 +4,10 @@ import { SidebarTrigger } from "@insta-puppeteer/ui/components/sidebar";
 import type { ReactNode } from "react";
 
 type DashboardLayoutProps = {
-  breadcrumb: ReactNode;
   children: ReactNode;
 };
 
-const DashboardLayout = ({ children, breadcrumb }: DashboardLayoutProps) => {
+const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   return (
     <div className="flex h-screen w-full">
       <Sidebar />
@@ -16,7 +15,6 @@ const DashboardLayout = ({ children, breadcrumb }: DashboardLayoutProps) => {
         <header className="flex items-center justify-between pl-2 pr-6 py-4 h-[50px]">
           <div className="flex items-center gap-8 w-full">
             <SidebarTrigger />
-            {breadcrumb}
           </div>
         </header>
         <Separator />
