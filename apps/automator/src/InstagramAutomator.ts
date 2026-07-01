@@ -85,10 +85,8 @@ export class InstagramAutomator {
 
         await this.postService.likePost();
 
-        const rootDir = this.browserService.getRootDir();
         const scrapedData = await this.postService.scrapePostData(
           sessionId,
-          rootDir,
           postLink,
         );
         await this.databaseService.savePost(scrapedData);

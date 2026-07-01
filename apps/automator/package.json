@@ -2,9 +2,10 @@
   "name": "@insta-puppeteer/automator",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "tsx watch src/main.ts",
-    "build": "tsc && tsc-alias",
+    "build": "tsup",
     "start": "node dist/main.js",
     "format": "biome format",
     "lint": "biome lint",
@@ -22,7 +23,7 @@
     "@insta-puppeteer/ts-config": "workspace:*",
     "@types/express": "^5.0.6",
     "@types/node": "^25",
-    "tsc-alias": "^1.8.17",
+    "tsup": "^8.5.1",
     "tsx": "^4.22.4",
     "typescript": "^5.9.3"
   }

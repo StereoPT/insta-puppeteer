@@ -7,6 +7,7 @@ import { prisma } from "@insta-puppeteer/database/server";
 
 const app = express();
 const port = process.env.PORT || 3200;
+const headless = process.env.HEADLESS === "true";
 
 app.use(express.json());
 
@@ -19,7 +20,7 @@ app.post("/automate", async (req, res) => {
     password: process.env.PASSWORD ?? "",
     userAgent:
       "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36",
-    headless: false,
+    headless,
     viewport: { width: 1280, height: 860 },
   };
 
