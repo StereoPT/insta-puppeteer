@@ -15,8 +15,4 @@ dist
 .env.*
 **/.env.*
 *.md
-profiles
-apps/dashboard/public/images
-packages/database/prisma/dev.db
-packages/database/prisma/dev.db-shm
-packages/database/prisma/dev.db-wal
+data
