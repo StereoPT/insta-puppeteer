@@ -26,7 +26,7 @@ export const PostCardSkelleton = () => {
 };
 
 type PostCardProps = {
-  post: Post & { session?: { hashtag: string } };
+  post: Post & { session?: { hashtag: string | null } };
   canDelete?: boolean;
 };
 

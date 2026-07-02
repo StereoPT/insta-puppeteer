@@ -1,5 +1,6 @@
 services:
   automator:
+    container_name: automator
     platform: linux/amd64
     build:
       context: .
@@ -7,16 +8,34 @@ services:
     ports:
       - "3200:3200"
     env_file:
-      - apps/automator/.env
-    environment:
-      HEADLESS: "true"
-      PROFILES_DIR: /data/profiles
-      IMAGES_DIR: /data/images
-      DATABASE_URL: file:/data/db/dev.db
-      PROFILE_NAME: stereopt-linux
+      - apps/automator/.env.docker
     volumes:
-      - ./profiles:/data/profiles
-      - ./apps/dashboard/public/images:/data/images
-      - ./packages/database/prisma:/data/db
+      - ./data/profiles:/data/profiles
+      - ./data/images:/data/images
+      - ./data/db:/data/db
     restart: unless-stopped
+    networks:
+      - insta-puppeteer
 
+  dashboard:
+    container_name: dashboard
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: apps/dashboard/Dockerfile
+    ports:
+      - "3000:3000"
+    env_file:
+      - apps/dashboard/.env.docker
+    volumes:
+      - ./data/images:/data/images:ro
+      - ./data/db:/data/db
+    depends_on:
+      - automator
+    restart: unless-stopped
+    networks:
+      - insta-puppeteer
+
+networks:
+  insta-puppeteer:
+    driver: bridge

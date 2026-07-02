@@ -3,6 +3,7 @@ import NextAuth, { type NextAuthResult } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
 export const nextAuth = NextAuth({
+  trustHost: true,
   providers: [
     Credentials({
       credentials: {
